@@ -1,0 +1,63 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "default": {},
+    "title": "Root Schema",
+    "required": [
+        "first_name",
+        "last_name",
+        "date_of_birth",
+        "phone_num",
+        "provider_id"
+    ],
+    "properties": {
+        "first_name": {
+            "type": "string",
+            "default": "",
+            "title": "The first_name Schema",
+            "examples": [
+                "Mark"
+            ]
+        },
+        "last_name": {
+            "type": "string",
+            "default": "",
+            "title": "The last_name Schema",
+            "examples": [
+                "Andrews"
+            ]
+        },
+        "date_of_birth": {
+            "type": "string",
+            "default": "",
+            "title": "The date_of_birth Schema",
+            "examples": [
+                "2005-07-17"
+            ]
+        },
+        "phone_num": {
+            "type": "integer",
+            "default": 0,
+            "title": "The phone_num Schema",
+            "examples": [
+                6032651120
+            ]
+        },
+        "provider_id": {
+            "type": "integer",
+            "default": 0,
+            "title": "The provider_id Schema",
+            "examples": [
+                1
+            ]
+        }
+    },
+    "examples": [{
+        "first_name": "Mark",
+        "last_name": "Andrews",
+        "date_of_birth": "2005-07-17",
+        "phone_num": 6032651120,
+        "provider_id": 1
+    }]
+}

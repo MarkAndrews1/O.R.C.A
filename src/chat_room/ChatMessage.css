@@ -1,0 +1,26 @@
+/* ChatMessage.css */
+
+.chat-message {
+    margin-bottom: 10px;
+  }
+  
+  .message-bubble {
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 70%;
+  }
+  
+  .provider-message .message-bubble {
+    background-color: #4CAF50; /* Green color for provider */
+    color: white;
+  }
+  
+  .patient-message .message-bubble {
+    background-color: #008CBA; /* Blue color for patient */
+    color: white;
+  }
+  
+  .message-content {
+    word-wrap: break-word;
+  }
+  

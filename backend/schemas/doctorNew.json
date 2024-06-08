@@ -1,0 +1,53 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "default": {},
+    "title": "Root Schema",
+    "required": [
+        "first_name",
+        "last_name",
+        "profile_img_url",
+        "provider_id"
+    ],
+    "properties": {
+        "first_name": {
+            "type": "string",
+            "default": "",
+            "title": "The first_name Schema",
+            "examples": [
+                "Mark"
+            ]
+        },
+        "last_name": {
+            "type": "string",
+            "default": "",
+            "title": "The last_name Schema",
+            "examples": [
+                "Johnson"
+            ]
+        },
+        "profile_img_url": {
+            "type": "string",
+            "default": "",
+            "title": "The profile_img_url Schema",
+            "examples": [
+                "https://hips.hearstapps.com/hmg-prod/images/portrait-of-a-happy-young-doctor-in-his-clinic-royalty-free-image-1661432441.jpg?crop=0.66698xw:1xh;center,top\u0026resize=1200:*"
+            ]
+        },
+        "provider_id": {
+            "type": "integer",
+            "default": 0,
+            "title": "The provider_id Schema",
+            "examples": [
+                1
+            ]
+        }
+    },
+    "examples": [{
+        "first_name": "Mark",
+        "last_name": "Johnson",
+        "profile_img_url": "https://hips.hearstapps.com/hmg-prod/images/portrait-of-a-happy-young-doctor-in-his-clinic-royalty-free-image-1661432441.jpg?crop=0.66698xw:1xh;center,top\u0026resize=1200:*",
+        "provider_id": 1
+    }]
+}

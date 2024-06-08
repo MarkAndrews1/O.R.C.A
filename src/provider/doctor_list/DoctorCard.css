@@ -1,0 +1,62 @@
+/* DoctorCard.css */
+
+.doctor-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    max-width: 300px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 16px auto;
+    background-color: #f9f9f9;
+}
+
+.doctor-card h2 {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: #333;
+}
+
+.doctor-card p {
+    margin: 8px 0;
+    font-size: 1em;
+    color: #666;
+}
+
+.doctor-card p strong {
+    color: #000;
+}
+
+.doctor-card-button {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #5f3f7c;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.doctor-card-button:hover {
+    background-color: #3d2850;
+}
+
+.doctor-profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
