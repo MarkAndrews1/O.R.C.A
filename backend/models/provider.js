@@ -3,12 +3,11 @@
 const db = require("../db");
 const bcrypt = require("bcrypt");
 
-const {   UnauthorizedError, BadRequestError, NotFoundError } = require("../expressError");
+const {   UnauthorizedError, NotFoundError } = require("../expressError");
 
 class Provider {
 
     static async authenticate(email, password) {
-        // Get the provider from the database by email
         const res = await db.query(
             `SELECT id, 
              provider_name AS "providerName",

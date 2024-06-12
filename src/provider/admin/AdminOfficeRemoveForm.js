@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import UserContext from '../../auth/UserContext';
 import OrcaApi from "../../api"; 
-import "./AdminOfficeRemoveForm.css"; // Import CSS file for styling
+import "./AdminOfficeRemoveForm.css";
 
 function AdminOfficeRemoveForm(){
     const { currentProvider } = useContext(UserContext);

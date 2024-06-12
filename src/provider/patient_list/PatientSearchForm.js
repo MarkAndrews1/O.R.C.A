@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./PatientSearchForm.css"; // Import the CSS file for styling
+import "./PatientSearchForm.css";
 
 function PatientSearchForm({ searchFor }) {
     const [formData, setFormData] = useState({

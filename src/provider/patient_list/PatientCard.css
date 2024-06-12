@@ -1,3 +1,4 @@
+/* PatientCard.css */
 .patient-card {
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -13,8 +14,6 @@
     font-size: 1.5em;
     color: #333;
 }
-
-/* PatientCard.css */
 
 .chat-link {
     border-radius: 8px;

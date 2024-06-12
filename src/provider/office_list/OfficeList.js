@@ -3,7 +3,7 @@ import OrcaApi from "../../api";
 import UserContext from "../../auth/UserContext";
 import OfficeCard from "./OfficeCard";
 import OfficeSearchForm from "./OfficeSearchForm";
-import "./OfficeList.css"; // Import the CSS file for styling
+import "./OfficeList.css"; 
 
 function OfficeList() {
     const [offices, setOffices] = useState();
@@ -34,11 +34,11 @@ function OfficeList() {
     if (!offices) return <h3>Loading...</h3>;
 
     return (
-        <div className="office-list-container"> {/* Apply the container class */}
+        <div className="office-list-container">
             <h2>Search for Offices</h2>
             <OfficeSearchForm searchFor={search} />
 
-            <div className="office-cards-container"> {/* Apply the container class */}
+            <div className="office-cards-container">
                 {offices.length ? (
                     <ul>
                         {offices.map((o) => (

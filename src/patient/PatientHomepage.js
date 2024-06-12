@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "../auth/UserContext";
 import OrcaApi from "../api";
-import "./PatientHomepage.css"; // Import CSS file for styling
+import "./PatientHomepage.css";
 
 function PatientHomepage() {
     const { currentPatient } = useContext(UserContext);

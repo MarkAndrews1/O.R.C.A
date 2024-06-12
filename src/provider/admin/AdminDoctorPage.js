@@ -6,7 +6,6 @@ import "../ProviderAdminPage.css"
 function AdminDoctorPage() {
     const { currentProvider } = useContext(UserContext)
 
-    // Check if currentProvider is null before accessing its properties
     if (!currentProvider) {
         return <div>Loading...</div>;
     }

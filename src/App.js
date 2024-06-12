@@ -24,7 +24,6 @@ function App() {
         if (providerToken) {
             try {
                 let { providerId } = jwtDecode(providerToken);
-                // Set the token on the Api class so it can use it to call the API.
                 OrcaApi.token = providerToken;
                 let currentProvider = await OrcaApi.getProvider(providerId);
                 setCurrentProvider(currentProvider);
@@ -39,7 +38,6 @@ function App() {
         if (patientToken) {
             try {
                 let { patientId } = jwtDecode(patientToken);
-                // Set the token on the Api class so it can use it to call the API.
                 OrcaApi.token = patientToken;
                 let currentPatient = await OrcaApi.getPatient(patientId);
                 setCurrentPatient(currentPatient);

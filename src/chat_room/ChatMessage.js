@@ -2,10 +2,9 @@ import React from "react";
 import "./ChatMessage.css";
 
 function ChatMessage({ message, sender, timeOfPosting }) {
-  // Function to format the date string to display only the date part
   const formatDate = (dateString) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString(); // Change the date to the user's local format
+    return date.toLocaleDateString();
   };
 
   return (

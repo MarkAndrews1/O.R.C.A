@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import UserContext from '../../auth/UserContext';
-import OrcaApi from "../../api"; 
 
 function AdminOfficeRemoveForm({searchFor}){
     const { currentProvider } = useContext(UserContext);

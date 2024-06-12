@@ -3,7 +3,7 @@ import OrcaApi from "../../api";
 import UserContext from "../../auth/UserContext";
 import PatientCard from "./PatientCard";
 import PatientSearchForm from "./PatientSearchForm";
-import "./PatientList.css"; // Import the CSS file for styling
+import "./PatientList.css";
 
 function PatientList() {
     const [patients, setPatients] = useState();
