@@ -1,57 +1,59 @@
-import React, {useState, useEffect, useContext  } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import OrcaApi from "../../api";
 import UserContext from "../../auth/UserContext";
 import DoctorCard from "./DoctorCard";
 import DoctorSearchForm from "./DoctorSearchForm";
+import "./DoctorList.css"; // Import CSS file for styling
 
-function DoctorList(){
-    const [doctors, setDoctors ] = useState()
-    const { currentProvider } = useContext(UserContext)
+function DoctorList() {
+    const [doctors, setDoctors] = useState();
+    const { currentProvider } = useContext(UserContext);
 
-    
-    useEffect(function getDoctors(){
-        getAllDoctors()
-    }, [])
+    useEffect(() => {
+        getDoctors();
+    }, []);
 
-    async function getAllDoctors(){
-        let doctors = await OrcaApi.getProviderDoctors(currentProvider.id)
-        setDoctors(doctors)
+    async function getDoctors() {
+        try {
+            let doctors = await OrcaApi.getProviderDoctors(currentProvider.id);
+            setDoctors(doctors);
+        } catch (error) {
+            console.error("Error fetching doctors:", error);
+        }
     }
 
-    async function search(data){
+    async function search(data) {
         try {
             const doctor = await OrcaApi.searchDoctor(data);
-            console.log(doctor)
             setDoctors(doctor ? [doctor] : []);
         } catch (error) {
             console.error("Error searching for doctor:", error);
         }
     }
 
-    
-    if(!doctors) return <h3>Loading...</h3>
+    if (!doctors) return <h3>Loading...</h3>;
 
-    return(
-        <div>
-            <DoctorSearchForm searchFor={search} />
-        {doctors.length 
-                ? <ul>
-                    {doctors.map(d => (
-                        <DoctorCard 
-                        key={d.id}
-                        id={d.id}
-                        doctor_id={d.id}
-                        first_name={d.first_name}
-                        last_name={d.last_name}
-                        profile_img_url={d.profile_img_url}
-                        />
-                    ))}
-                  </ul>
-                : <p> Sorry, couldn't find that doctor... </p>
-        }
-    </div>  
-    )
+    return (
+        <div className="doctor-list-container">
+            <h2>Search for Doctors</h2>
+            <div className="search-form-container">
+                <DoctorSearchForm searchFor={search} />
+            </div>
 
+            <div className="doctor-grid">
+                {doctors.map((doctor) => (
+                    <DoctorCard
+                        key={doctor.id}
+                        id={doctor.id}
+                        doctor_id={doctor.id}
+                        first_name={doctor.first_name}
+                        last_name={doctor.last_name}
+                        profile_img_url={doctor.profile_img_url}
+                    />
+                ))}
+            </div>
+        </div>
+    );
 }
 
-export default DoctorList
+export default DoctorList;

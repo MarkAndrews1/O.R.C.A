@@ -32,7 +32,7 @@
     padding: 8px 16px;
     text-decoration: none;
     color: #fff;
-    background-color: #5f3f7c;
+    background-color: #37a0dd;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -40,7 +40,7 @@
 }
 
 .doctor-card-button:hover {
-    background-color: #3d2850;
+    background-color: #2a77a3;
 }
 
 .doctor-profile-pic {

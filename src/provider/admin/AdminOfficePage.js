@@ -14,6 +14,7 @@ function AdminOfficePage() {
     return (
         <div>
             <div className="container text-center">
+                <h1>Office's Page</h1>
                 <ul>
                     <li>
                         <Link className="admin-link" to="/provider/admin/offices/create">

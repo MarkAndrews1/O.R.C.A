@@ -53,7 +53,7 @@ function PatientCard({ patient_id, first_name, last_name, date_of_birth, phone_n
             <p><strong>Last Name:</strong> {last_name}</p>
             <p><strong>Date of Birth:</strong> {formatDate(date_of_birth)}</p>
             <p><strong>Phone Number:</strong> {formatPhoneNumber(phone_num)}</p>
-            <Link className="link" to={`/provider/chat/${patient_id}`}>
+            <Link className="chat-link" to={`/provider/chat/${patient_id}`}>
             Chat
             </Link>
             {appointmentsDisplayed ? (

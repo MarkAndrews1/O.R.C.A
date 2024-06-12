@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import UserContext from '../../auth/UserContext';
 import OrcaApi from "../../api"; 
+import "./AdminOfficeRemoveForm.css"; // Import CSS file for styling
 
 function AdminOfficeRemoveForm(){
     const { currentProvider } = useContext(UserContext);
@@ -22,23 +23,23 @@ function AdminOfficeRemoveForm(){
 
     async function handleSubmit(evt) {
         evt.preventDefault();
-        let res = await OrcaApi.removeOffice(formData);
-        if(!res){
-            setMessage("office removed successfully!");
+        try{
+            let res = await OrcaApi.removeOffice(formData);
+            setMessage("Office removed successfully!");
             setFormData({
                 address: ""
             });
-        } else {
-            setMessage("Failed to remove office.");
+        } catch(err) {
+            setMessage("Invalid office credentials.");
         }
     }
     
     return (
-        <div className="APCF-container">
+        <div className="admin-office-remove-form-container">
             <h2>Please enter office address.</h2>
-            {message && <p>{message}</p>}
-            <form onSubmit={handleSubmit}>
-            <div className="form-group">
+            {message && <p className="message">{message}</p>}
+            <form onSubmit={handleSubmit} className="office-remove-form">
+                <div className="form-group">
                     <input
                         name="address"
                         type="text"

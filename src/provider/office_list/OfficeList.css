@@ -1,0 +1,21 @@
+.office-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.office-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.office-cards-container ul {
+    list-style: none;
+    padding: 0;
+}
+
+.office-cards-container p {
+    margin-top: 20px;
+    color: #666;
+}

@@ -1,18 +1,58 @@
+/* ChatRoom.css */
+
 .chat-room-container {
   display: flex;
-  justify-content: center;
-  height: 100vh;
-  margin-top: 100px;
+  flex-direction: column;
+  align-items: center;
 }
 
 .chat-room {
-  width: 80%;
-  max-width: 600px; /* Adjust as needed */
+  width: 80%; 
+  max-width: 600px; 
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+  background-color: #f9f9f9;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 .chat-messages {
+  max-height: 60vh;
   overflow-y: auto;
-  max-height: 70vh; /* Adjust as needed */
 }
 
-/* Other styles for ChatMessage and ChatForm components... */
+.chat-form {
+  margin-top: 20px;
+}
+
+.chat-form {
+  padding: 20px;
+  border-top: 1px solid #ddd;
+}
+
+.chat-input {
+  width: calc(100% - 110px);
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.chat-room-link{
+  width: 200px;
+  height: 30px;
+  border-radius: 8px;
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #34b3fc;
+  font-size: larger;
+  transition: color 0.3s;
+}
+
+.chat-room-link:hover{
+  background-color: #2f93cc;
+}

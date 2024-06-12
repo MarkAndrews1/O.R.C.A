@@ -11,12 +11,12 @@
   }
   
   .provider-message .message-bubble {
-    background-color: #4CAF50; /* Green color for provider */
+    background-color: #4CAF50;
     color: white;
   }
   
   .patient-message .message-bubble {
-    background-color: #008CBA; /* Blue color for patient */
+    background-color: #008CBA;
     color: white;
   }
   

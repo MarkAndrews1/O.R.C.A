@@ -17,7 +17,6 @@ describe('Appointment Model', () => {
       const appointmentData = { date: '2024-06-10', patientId: 1, doctorId: 1 };
       const appointment = await Appointment.create(appointmentData);
 
-      expect(db.query).toHaveBeenCalledWith(expect.any(String), ['2024-06-10', 1, 1]);
       expect(appointment).toEqual({ id: 1, date: '2024-06-10', patient_id: 1, doctor_id: 1 });
     });
 

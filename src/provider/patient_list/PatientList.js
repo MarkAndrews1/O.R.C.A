@@ -1,24 +1,29 @@
-import React, {useState, useEffect, useContext  } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import OrcaApi from "../../api";
 import UserContext from "../../auth/UserContext";
 import PatientCard from "./PatientCard";
 import PatientSearchForm from "./PatientSearchForm";
+import "./PatientList.css"; // Import the CSS file for styling
 
-function PatientList(){
-    const [patients, setPatients ] = useState()
-    const { currentProvider } = useContext(UserContext)
+function PatientList() {
+    const [patients, setPatients] = useState();
+    const { currentProvider } = useContext(UserContext);
 
-    
-    useEffect(function getPatients(){
-        getAllPatients()
-    }, [])
+    useEffect(() => {
+        getPatients();
+    }, []);
 
-    async function getAllPatients(){
-        let patients = await OrcaApi.getProviderPatients(currentProvider.id)
-        setPatients(patients)
+    async function getPatients() {
+        try {
+            const patients = await OrcaApi.getProviderPatients(currentProvider.id);
+            setPatients(patients);
+            console.log(patients);
+        } catch (error) {
+            console.error("Error retrieving patients:", error);
+        }
     }
 
-    async function search(data){
+    async function search(data) {
         try {
             const patient = await OrcaApi.searchPatient(data);
             setPatients(patient ? [patient] : []);
@@ -27,31 +32,31 @@ function PatientList(){
         }
     }
 
-    
-    if(!patients) return <h3>Loading...</h3>
+    if (!patients) return <h3>Loading...</h3>;
 
-    return(
-        <div>
+    return (
+        <div className="patient-list-container">
+            <h2>Search for patients</h2>
             <PatientSearchForm searchFor={search} />
-        {patients.length 
-                ? <ul>
-                    {patients.map(p => (
-                        <PatientCard 
-                        key={p.id}
-                        id={p.id}
-                        patient_id={p.id}
-                        first_name={p.first_name}
-                        last_name={p.last_name}
-                        date_of_birth={p.date_of_birth}
-                        phone_num={p.phone_num}
+            <div className="patient-cards-container">
+                {patients.length ? (
+                    patients.map((p) => (
+                        <PatientCard
+                            key={p.id}
+                            id={p.id}
+                            patient_id={p.id}
+                            first_name={p.first_name}
+                            last_name={p.last_name}
+                            date_of_birth={p.date_of_birth}
+                            phone_num={p.phone_num}
                         />
-                    ))}
-                  </ul>
-                : <p> Sorry, couldn't find that patient... </p>
-        }
-    </div>  
-    )
-
+                    ))
+                ) : (
+                    <p>Sorry, couldn't find that patient...</p>
+                )}
+            </div>
+        </div>
+    );
 }
 
-export default PatientList
+export default PatientList;

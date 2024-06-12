@@ -31,15 +31,15 @@ function AdminPatientRemoveForm(){
 
     async function handleSubmit(evt) {
         evt.preventDefault();
-        let res = await OrcaApi.removePatient(formData)
-        if(!res){
+        try{
+            let res = await OrcaApi.removePatient(formData)
             setMessage("Patient removed successfully!");
             setFormData({
         phone_num: "",
         date_of_birth: ""
             });
-        } else {
-            setMessage("Failed to remove patient.");
+        } catch(err) {
+            setMessage("Invalid patient credentials.");
         }
     }
     
@@ -70,7 +70,7 @@ function AdminPatientRemoveForm(){
                         required
                     />
                 </div>
-                <button type="submit" className="submit-btn">Enter</button>
+                <button type="submit" className="submit-btn">Remove</button>
             </form>
         </div>
     )

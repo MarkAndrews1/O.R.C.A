@@ -26,7 +26,6 @@ function AdminOfficeRemoveForm({searchFor}){
     
     return (
         <div className="APCF-container">
-            <h2>Please enter office address.</h2>
             <form onSubmit={handleSubmit}>
             <div className="form-group">
                     <input

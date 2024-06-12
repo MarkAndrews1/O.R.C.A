@@ -1,0 +1,43 @@
+/* AdminDoctorCreateForm.css */
+
+.ADCF-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ADCF-form {
+    width: 300px;
+}
+
+.ADCF-form-group {
+    margin-bottom: 20px;
+}
+
+.ADCF-form-label {
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.ADCF-form-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.ADCF-submit-btn {
+    padding: 10px 20px;
+    background-color: #37a0dd;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.3s;
+}
+
+.ADCF-submit-btn:hover {
+    background-color: #2a77a3;
+}

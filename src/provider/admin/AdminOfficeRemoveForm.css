@@ -1,0 +1,38 @@
+.admin-office-remove-form-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.admin-office-remove-form-container h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.admin-office-remove-form-container .form-group {
+    margin-bottom: 20px;
+}
+
+.admin-office-remove-form-container .form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.admin-office-remove-form-container .submit-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #37a0dd;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.admin-office-remove-form-container .submit-btn:hover {
+    background-color: #2a77a3;
+}

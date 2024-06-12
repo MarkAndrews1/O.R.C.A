@@ -14,6 +14,7 @@ function AdminDoctorPage() {
     return (
         <div>
             <div className="container text-center">
+                <h1>Doctor's Page</h1>
                 <ul>
                     <li>
                         <Link className="admin-link" to="/provider/admin/doctors/create">

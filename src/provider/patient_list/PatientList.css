@@ -1,0 +1,30 @@
+
+.patient-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .patient-cards-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .patient-card {
+    max-width: 100%; /* Adjust the width of each card */
+  }
+  
+  .patient-card h3 {
+    margin-top: 0;
+    font-size: 1.2rem;
+    color: #333;
+  }
+  
+  .patient-card p {
+    font-size: 1rem;
+    color: #666;
+  }
+  

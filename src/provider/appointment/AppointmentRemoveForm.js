@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import UserContext from '../../auth/UserContext';
 import OrcaApi from "../../api";
+import "./AppointmentRemoveForm.css";
 
 function AppointmentRemoveForm() {
     const { currentProvider } = useContext(UserContext);
@@ -40,8 +41,8 @@ function AppointmentRemoveForm() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        let res = await OrcaApi.removeAppointment(formData)
-        if(!res){
+        try{
+            let res = await OrcaApi.removeAppointment(formData)
             setMessage("Appointment removed successfully!");
             setFormData({
                 date: "",
@@ -50,20 +51,19 @@ function AppointmentRemoveForm() {
                 first_name: "",
                 last_name: "",
             });
-        } else {
+        } catch(err) {
             setMessage("Failed to remove Appointment.");
         }
     };
 
     return (
-        <div>
+        <div className="container">
             <h2>Please enter information</h2>
-            {message && <p>{message}</p>}
+            {message && <p className="message">{message}</p>} 
             <form onSubmit={handleSubmit}>
-                <div>
-                <label>
-                        Date of Appointment:
-                        <input
+                <div className="form-group">
+                    <label>Date of Appointment:</label>
+                    <input
                         name="date" 
                         type="text"
                         placeholder="YYYY-MM-DD"
@@ -72,12 +72,10 @@ function AppointmentRemoveForm() {
                         onChange={handleChange}
                         required
                     />
-                    </label>
                 </div>
-                <div>
-                    <label>
-                        Patient's Phone Number:
-                        <input
+                <div className="form-group">
+                    <label>Patient's Phone Number:</label>
+                    <input
                         name="phone_num"
                         type="tel"
                         placeholder="Enter patient phone number..."
@@ -86,12 +84,10 @@ function AppointmentRemoveForm() {
                         onChange={handleChange}
                         required
                     />
-                    </label>
                 </div>
-                <div>
-                    <label>
-                        Date of Patient's Birth:
-                        <input
+                <div className="form-group">
+                    <label>Date of Patient's Birth:</label>
+                    <input
                         name="date_of_birth" 
                         type="text"
                         placeholder="YYYY-MM-DD"
@@ -100,12 +96,10 @@ function AppointmentRemoveForm() {
                         onChange={handleChange}
                         required
                     />
-                    </label>
                 </div>
-                <div>
-                    <label>
-                        Doctor First Name:
-                        <input
+                <div className="form-group">
+                    <label>Doctor First Name:</label>
+                    <input
                         name="first_name"
                         type="text"
                         placeholder="Enter first name..."
@@ -114,12 +108,10 @@ function AppointmentRemoveForm() {
                         onChange={handleChange}
                         required
                     />
-                    </label>
                 </div>
-                <div>
-                    <label>
-                        Doctor Last Name:
-                        <input
+                <div className="form-group">
+                    <label>Doctor Last Name:</label>
+                    <input
                         name="last_name"
                         type="text"
                         placeholder="Enter last name..."
@@ -128,9 +120,8 @@ function AppointmentRemoveForm() {
                         onChange={handleChange}
                         required
                     />
-                    </label>
                 </div>
-                <button type="submit">Submit</button>
+                <button type="submit">Remove</button>
             </form>
         </div>
     );

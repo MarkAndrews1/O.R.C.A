@@ -1,8 +1,9 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from 'react-router-dom';
 import UserContext from '../auth/UserContext'; 
+import "./PatientLoginForm.css";
 
-function PatientLoginForm({login}){
+function PatientLoginForm({ login }) {
     const navigate = useNavigate();
     const { currentPatient } = useContext(UserContext);
 
@@ -18,7 +19,7 @@ function PatientLoginForm({login}){
     function handleChange(evt) {
         const { name, value } = evt.target;
         let processedValue = value;
-        
+
         if (name === "date_of_birth") {
             processedValue = value.replace(/\//g, '-');
         }
@@ -33,7 +34,6 @@ function PatientLoginForm({login}){
         }));
     }
 
-
     async function handleSubmit(evt) {
         evt.preventDefault();
         let res = await login(formData);
@@ -43,7 +43,7 @@ function PatientLoginForm({login}){
             console.error("Error");
         }
     }
-    
+
     return (
         <div className="PLF-container">
             <h2>Please enter your date of birth and phone number.</h2>
@@ -60,8 +60,8 @@ function PatientLoginForm({login}){
                     />
                 </div>
                 <div className="form-group">
-                <input
-                        name="date_of_birth" 
+                    <input
+                        name="date_of_birth"
                         type="text"
                         placeholder="YYYY-MM-DD"
                         className="form-control"
@@ -73,7 +73,7 @@ function PatientLoginForm({login}){
                 <button type="submit" className="submit-btn">Enter</button>
             </form>
         </div>
-    )
+    );
 }
 
 export default PatientLoginForm;

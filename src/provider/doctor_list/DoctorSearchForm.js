@@ -1,7 +1,8 @@
 import React, { useState, useContext } from "react";
 import UserContext from "../../auth/UserContext";
+import "./DoctorSearchForm.css"
 
-function PatientSearchForm({searchFor}){
+function DoctorSearchForm({searchFor}){
     const { currentProvider } = useContext(UserContext)
     const [formData, setFormData] = useState({
         first_name: "",
@@ -26,35 +27,30 @@ function PatientSearchForm({searchFor}){
     }
     
     return (
-        <div className="DSF-container">
-            <h2>Please enter doctor details.</h2>
-            <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <input
-                        name="first_name"
-                        type="text"
-                        placeholder="Enter first name..."
-                        className="form-control"
-                        value={formData.first_name}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div className="form-group">
-                    <input
-                        name="last_name"
-                        type="text"
-                        placeholder="Enter last name..."
-                        className="form-control"
-                        value={formData.last_name}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <button type="submit" className="submit-btn">Enter</button>
+        <div className="search-bar-container">
+            <form onSubmit={handleSubmit} className="search-bar-form">
+                <input
+                    name="first_name"
+                    type="text"
+                    placeholder="Enter first name..."
+                    className="search-bar-input"
+                    value={formData.first_name}
+                    onChange={handleChange}
+                    required
+                />
+                <input
+                    name="last_name"
+                    type="text"
+                    placeholder="Enter last name..."
+                    className="search-bar-input"
+                    value={formData.last_name}
+                    onChange={handleChange}
+                    required
+                />
+                <button type="submit" className="search-bar-submit">Search</button>
             </form>
         </div>
     )
 }
 
-export default PatientSearchForm;
+export default DoctorSearchForm;

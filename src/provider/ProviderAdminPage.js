@@ -13,8 +13,8 @@ function ProviderAdminPage() {
     return (
         <div>
             <div className="container text-center">
-                <h1>Welcome to the {currentProvider.providerName} admin page</h1>
-                <h2>Manage</h2>
+                <h1>{currentProvider.providerName} admin page</h1>
+                <h2>Manage:</h2>
                 <ul className="admin-list">
                     <li className="provider-li">
                         <Link className="admin-link" to="/provider/admin/patients">

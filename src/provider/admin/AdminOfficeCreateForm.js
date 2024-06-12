@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import UserContext from '../../auth/UserContext';
-import OrcaApi from "../../api"; 
+import OrcaApi from "../../api";
+import "./AdminOfficeCreateForm.css"; // Import the CSS file for styling
 
 function AdminOfficeCreateForm(){
     const { currentProvider } = useContext(UserContext);
@@ -28,46 +29,46 @@ function AdminOfficeCreateForm(){
 
     async function handleSubmit(evt) {
         evt.preventDefault();
-        let res = await OrcaApi.createOffice(formData);
-        if(res.id){
-            setMessage("office created successfully!");
+        try{
+            let res = await OrcaApi.createOffice(formData);
+            setMessage("Office created successfully!");
             setFormData({
                 address: "",
                 phone_num: ""
             });
-        } else {
-            setMessage("Failed to create office.");
+        } catch(err) {
+            setMessage(`Invalid office credentials.`);
         }
     }
     
     return (
-        <div className="APCF-container">
+        <div className="AOCF-container">
             <h2>Please enter office details.</h2>
             {message && <p>{message}</p>}
-            <form onSubmit={handleSubmit}>
-            <div className="form-group">
+            <form onSubmit={handleSubmit} className="AOCF-form">
+                <div className="AOCF-form-group">
                     <input
                         name="address"
                         type="text"
                         placeholder="Enter address..."
-                        className="form-control"
+                        className="AOCF-form-input"
                         value={formData.address}
                         onChange={handleChange}
                         required
                     />
                 </div>
-                <div className="form-group">
+                <div className="AOCF-form-group">
                     <input
                         name="phone_num"
                         type="tel"
                         placeholder="Enter phone number..."
-                        className="form-control"
+                        className="AOCF-form-input"
                         value={formData.phone_num}
                         onChange={handleChange}
                         required
                     />
                 </div>
-                <button type="submit" className="submit-btn">Submit</button>
+                <button type="submit" className="AOCF-submit-btn">Submit</button>
             </form>
         </div>
     )

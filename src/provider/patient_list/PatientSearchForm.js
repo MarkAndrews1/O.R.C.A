@@ -1,6 +1,7 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
+import "./PatientSearchForm.css"; // Import the CSS file for styling
 
-function PatientSearchForm({searchFor}){
+function PatientSearchForm({ searchFor }) {
     const [formData, setFormData] = useState({
         phone_num: "",
         date_of_birth: ""
@@ -24,43 +25,38 @@ function PatientSearchForm({searchFor}){
         }));
     }
 
-
     async function handleSubmit(evt) {
         evt.preventDefault();
         await searchFor(formData);
-
     }
     
     return (
-        <div className="PLF-container">
-            <h2>Please enter your date of birth and phone number.</h2>
-            <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <input
-                        name="phone_num"
-                        type="tel"
-                        placeholder="Enter your phone number..."
-                        className="form-control"
-                        value={formData.phone_num}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div className="form-group">
+        <div className="search-bar-container">
+            <form className="search-bar-form" onSubmit={handleSubmit}>
                 <input
-                        name="date_of_birth" 
-                        type="text"
-                        placeholder="YYYY-MM-DD"
-                        className="form-control"
-                        value={formData.date_of_birth}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <button type="submit" className="submit-btn">Enter</button>
+                    name="phone_num"
+                    type="tel"
+                    placeholder="Enter patient phone number..."
+                    className="search-bar-input"
+                    value={formData.phone_num}
+                    onChange={handleChange}
+                    required
+                />
+                <input
+                    name="date_of_birth" 
+                    type="text"
+                    placeholder="YYYY-MM-DD"
+                    className="search-bar-input"
+                    value={formData.date_of_birth}
+                    onChange={handleChange}
+                    required
+                />
+                <button type="submit" className="search-btn">
+                    Search
+                </button>
             </form>
         </div>
-    )
+    );
 }
 
 export default PatientSearchForm;

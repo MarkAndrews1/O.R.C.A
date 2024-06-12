@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import UserContext from '../../auth/UserContext';
 import OrcaApi from "../../api";
+import "./AppointmentCreateForm.css";
 
 function AppointmentCreateForm() {
     const { currentProvider } = useContext(UserContext);
@@ -20,11 +21,7 @@ function AppointmentCreateForm() {
         const { name, value } = evt.target;
         let processedValue = value;
         
-        if (name === "date_of_birth") {
-            processedValue = value.replace(/\//g, '-');
-        }
-
-        if (name === "date") {
+        if (name === "date_of_birth" || name === "date") {
             processedValue = value.replace(/\//g, '-');
         }
     
@@ -41,8 +38,8 @@ function AppointmentCreateForm() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        let res = await OrcaApi.createAppointment(formData)
-        if(res){
+        try {
+            let res = await OrcaApi.createAppointment(formData);
             setMessage("Appointment created successfully!");
             setFormData({
                 date: "",
@@ -52,101 +49,83 @@ function AppointmentCreateForm() {
                 last_name: "",
                 address: "",
             });
-        } else {
+        } catch(err) {
             setMessage("Failed to create Appointment.");
         }
     };
 
     return (
-        <div>
+        <div className="container">
             <h2>Please enter information</h2>
-            {message && <p>{message}</p>}
+            {message && <p className="message">{message}</p>}
             <form onSubmit={handleSubmit}>
-                <div>
-                <label>
-                        Date of Appointment:
-                        <input
+                <div className="form-group">
+                    <label>Date of Appointment:</label>
+                    <input
                         name="date" 
                         type="text"
                         placeholder="YYYY-MM-DD"
-                        className="form-control"
                         value={formData.date}
                         onChange={handleChange}
                         required
                     />
-                    </label>
                 </div>
-                <div>
-                    <label>
-                        Patient's Phone Number:
-                        <input
+                <div className="form-group">
+                    <label>Patient's Phone Number:</label>
+                    <input
                         name="phone_num"
                         type="tel"
                         placeholder="Enter patient phone number..."
-                        className="form-control"
                         value={formData.phone_num}
                         onChange={handleChange}
                         required
                     />
-                    </label>
                 </div>
-                <div>
-                    <label>
-                        Date of Patient's Birth:
-                        <input
+                <div className="form-group">
+                    <label>Date of Patient's Birth:</label>
+                    <input
                         name="date_of_birth" 
                         type="text"
                         placeholder="YYYY-MM-DD"
-                        className="form-control"
                         value={formData.date_of_birth}
                         onChange={handleChange}
                         required
                     />
-                    </label>
                 </div>
-                <div>
-                    <label>
-                        Doctor First Name:
-                        <input
+                <div className="form-group">
+                    <label>Doctor First Name:</label>
+                    <input
                         name="first_name"
                         type="text"
                         placeholder="Enter first name..."
-                        className="form-control"
                         value={formData.first_name}
                         onChange={handleChange}
                         required
                     />
-                    </label>
                 </div>
-                <div>
-                    <label>
-                        Doctor Last Name:
-                        <input
+                <div className="form-group">
+                    <label>Doctor Last Name:</label>
+                    <input
                         name="last_name"
                         type="text"
                         placeholder="Enter last name..."
-                        className="form-control"
                         value={formData.last_name}
                         onChange={handleChange}
                         required
                     />
-                    </label>
                 </div>
-                <div>
-                    <label>
-                        Office Address:
-                        <input
+                <div className="form-group">
+                    <label>Office Address:</label>
+                    <input
                         name="address"
                         type="text"
                         placeholder="Enter address..."
-                        className="form-control"
                         value={formData.address}
                         onChange={handleChange}
                         required
                     />
-                    </label>
                 </div>
-                <button type="submit">Submit</button>
+                <button type="submit">Add</button>
             </form>
         </div>
     );

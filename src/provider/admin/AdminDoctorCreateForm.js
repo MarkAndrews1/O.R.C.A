@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import UserContext from '../../auth/UserContext';
-import OrcaApi from "../../api"; 
+import OrcaApi from "../../api";
+import './AdminDoctorCreateForm.css';
 
 function AdminDoctorCreateForm(){
     const { currentProvider } = useContext(UserContext);
@@ -24,60 +25,60 @@ function AdminDoctorCreateForm(){
 
     async function handleSubmit(evt) {
         evt.preventDefault();
+            try{
+                let res = await OrcaApi.createDoctor(formData);
+                setMessage(`Doctor created successfully!`);
+                setFormData({
+                    first_name: "",
+                    last_name: "",
+                    profile_img_url: ""
+                });
+            }catch(err){
+                setMessage("Invalid doctor credentials.");
+            }
 
-        let res = await OrcaApi.createDoctor(formData);
-        if(res.id){
-            setMessage("Doctor created successfully!");
-            setFormData({
-                first_name: "",
-                last_name: "",
-                profile_img_url: ""
-            });
-        } else {
-            setMessage("Failed to create doctor.");
-        }
     }
     
     return (
-        <div className="APCF-container">
+        <div className="ADCF-container">
             <h2>Please enter doctor details.</h2>
             {message && <p>{message}</p>}
-            <form onSubmit={handleSubmit}>
-                <div className="form-group">
+            <form onSubmit={handleSubmit} className="ADCF-form">
+                <div className="ADCF-form-group">
                     <input
                         name="first_name"
                         type="text"
                         placeholder="Enter first name..."
-                        className="form-control"
+                        className="ADCF-form-input"
                         value={formData.first_name}
                         onChange={handleChange}
                         required
                     />
                 </div>
-                <div className="form-group">
+                <div className="ADCF-form-group">
                     <input
                         name="last_name"
                         type="text"
                         placeholder="Enter last name..."
-                        className="form-control"
+                        className="ADCF-form-input"
                         value={formData.last_name}
                         onChange={handleChange}
                         required
                     />
                 </div>
                 {/* New input fields for doctor */}
-                <div className="form-group">
+                <div className="ADCF-form-group">
                     <input
                         name="profile_img_url"
                         type="text"
                         placeholder="Enter profile image URL..."
-                        className="form-control"
+                        className="ADCF-form-input"
                         value={formData.profile_img_url}
                         onChange={handleChange}
                         required
                     />
                 </div>
-                <button type="submit" className="submit-btn">Submit</button>
+                <button type="submit" className="ADCF-submit-btn">Submit</button>
             </form>
         </div>
     )

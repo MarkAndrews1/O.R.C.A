@@ -1,6 +1,8 @@
 import React, { useState, useContext } from "react";
 import UserContext from '../../auth/UserContext';
-import OrcaApi from "../../api"; 
+import OrcaApi from "../../api";
+
+import "./AdminPatientCreateForm.css"
 
 function AdminPatientCreateForm(){
     const { currentProvider } = useContext(UserContext);
@@ -34,8 +36,8 @@ function AdminPatientCreateForm(){
 
     async function handleSubmit(evt) {
         evt.preventDefault();
-        let res = await OrcaApi.createPatient(formData);
-        if(res.id){
+        try {
+            let res = await OrcaApi.createPatient(formData);
             setMessage("Patient created successfully!");
             setFormData({
                 first_name: "",
@@ -43,8 +45,8 @@ function AdminPatientCreateForm(){
                 date_of_birth: "",
                 phone_num: ""
             });
-        } else {
-            setMessage("Failed to create patient.");
+        } catch(err){
+            setMessage("Invalid patient credentials.");
         }
     }
     

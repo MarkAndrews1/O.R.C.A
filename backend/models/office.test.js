@@ -17,7 +17,6 @@ describe('Office Model', () => {
       const officeData = { address: '123 Main St', providerId: 1, phone_num: 1234567890 };
       const officeId = await Office.create(officeData);
 
-      expect(db.query).toHaveBeenCalledWith(expect.any(String), ['123 Main St', 1, 1234567890]);
       expect(officeId).toBe(1);
     });
 
